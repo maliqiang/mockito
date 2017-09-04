@@ -122,7 +122,7 @@ public class MockMethodAdvice extends MockMethodDispatcher {
         MethodGraph.Node node = compiler
             .compile(new TypeDescription.ForLoadedType(instance.getClass()))
             .locate(new MethodDescription.ForLoadedMethod(origin).asSignatureToken());
-        return node.getSort().isResolved() && !node.getRepresentative().represents(origin);
+        return node.getSort().isResolved() && !node.getRepresentative().asDefined().represents(origin);
     }
 
     private static class SuperMethodCall implements InterceptedInvocation.SuperMethod {
